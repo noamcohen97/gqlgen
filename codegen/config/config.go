@@ -55,6 +55,7 @@ type Config struct {
 	EnableModelJsonOmitemptyTag    *bool          `yaml:"enable_model_json_omitempty_tag,omitempty"`
 	SkipValidation                 bool           `yaml:"skip_validation,omitempty"`
 	SkipModTidy                    bool           `yaml:"skip_mod_tidy,omitempty"`
+	RemoveFileBeforeWrite          bool           `yaml:"remove_file_before_write,omitempty"`
 	Sources                        []*ast.Source  `yaml:"-"`
 	Packages                       *code.Packages `yaml:"-"`
 	Schema                         *ast.Schema    `yaml:"-"`

@@ -309,13 +309,14 @@ func (m *Plugin) MutateConfig(cfg *config.Config) error {
 	}
 
 	err := templates.Render(templates.Options{
-		PackageName:     cfg.Model.Package,
-		Filename:        cfg.Model.Filename,
-		Data:            b,
-		GeneratedHeader: true,
-		Packages:        cfg.Packages,
-		Template:        newModelTemplate,
-		Funcs:           funcMap,
+		PackageName:           cfg.Model.Package,
+		Filename:              cfg.Model.Filename,
+		Data:                  b,
+		GeneratedHeader:       true,
+		Packages:              cfg.Packages,
+		Template:              newModelTemplate,
+		Funcs:                 funcMap,
+		RemoveFileBeforeWrite: cfg.RemoveFileBeforeWrite,
 	})
 	if err != nil {
 		return err

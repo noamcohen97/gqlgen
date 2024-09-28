@@ -323,9 +323,10 @@ func (f *Federation) GenerateCode(data *codegen.Data) error {
 			Federation
 			UsePointers bool
 		}{*f, data.Config.ResolversAlwaysReturnPointers},
-		GeneratedHeader: true,
-		Packages:        data.Config.Packages,
-		Template:        federationTemplate,
+		GeneratedHeader:       true,
+		Packages:              data.Config.Packages,
+		Template:              federationTemplate,
+		RemoveFileBeforeWrite: data.Config.RemoveFileBeforeWrite,
 	})
 }
 
@@ -631,9 +632,10 @@ func (f *Federation) generateExplicitRequires(
 			Populators      []Populator
 			OriginalSource  string
 		}{*f, existingImports, populators, ""},
-		GeneratedHeader: false,
-		Packages:        data.Config.Packages,
-		Template:        explicitRequiresTemplate,
+		GeneratedHeader:       false,
+		Packages:              data.Config.Packages,
+		Template:              explicitRequiresTemplate,
+		RemoveFileBeforeWrite: data.Config.RemoveFileBeforeWrite,
 	})
 }
 
