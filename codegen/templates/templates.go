@@ -676,6 +676,11 @@ func write(filename string, b []byte, packages *code.Packages) error {
 		formatted = b
 	}
 
+	err = os.Remove(filename)
+	if err != nil && !errors.Is(err, fs.ErrNotExist) {
+		return err
+	}
+
 	err = os.WriteFile(filename, formatted, 0o644)
 	if err != nil {
 		return fmt.Errorf("failed to write %s: %w", filename, err)
