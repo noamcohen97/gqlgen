@@ -8,6 +8,7 @@ import (
 
 // Unalias unwraps an alias type
 func Unalias(t types.Type) types.Type {
+	t = types.Unalias(t)
 	if p, ok := t.(*types.Pointer); ok {
 		// If the type come from auto-binding,
 		// it will be a pointer to an alias type.
@@ -15,5 +16,5 @@ func Unalias(t types.Type) types.Type {
 		// *ent.Cursor is the type we got from auto-binding.
 		return types.NewPointer(Unalias(p.Elem()))
 	}
-	return types.Unalias(t)
+	return t
 }
